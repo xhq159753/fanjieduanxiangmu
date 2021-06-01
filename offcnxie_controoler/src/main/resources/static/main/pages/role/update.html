@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+
+    <link rel="stylesheet" href="../../plugins/elementui/index.css">
+    <link rel="stylesheet" href="../../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- 引入组件库 -->
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script src="../../js/vue.js"></script>
+    <script src="../../plugins/elementui/index.js"></script>
+    <script src="../../js/axios-0.18.0.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <el-tabs v-model="activeName" type="card">
+        <el-tab-pane label="基本信息" name="first">
+            <el-form :model="formData" label-position="right"
+                     label-width="100px">
+                <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="编码">
+                            <el-input v-model="formData.id"/>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-form-item label="名称">
+                            <el-input v-model="formData.name"/>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="说明">
+                            <el-input v-model="formData.keyword" type="textarea"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="注意事项">
+                            <el-input v-model="formData.description" type="textarea"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item label="操作">
+                            <el-button size="mini" type="danger" @click="handleAdd()">确定</el-button>
+                            <el-button size="mini" type="danger" @click="handleAdd(scope.row.id)">取消</el-button>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+
+
+            </el-form>
+        </el-tab-pane>
+    </el-tabs>
+</div>
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+
+            activeName: 'first',//添加/编辑窗口Tab标签名称
+            pagination: {//分页相关属性
+                currentPage: 1,
+                pageSize: 10,
+                total: 100,
+                queryString: null,
+            },
+            dataList: [],//列表数据
+            formData: {},//表单数据
+            tableData: [],//新增和编辑表单中对应的检查项列表数据
+            checkitemIds: [],//新增和编辑表单中检查项对应的复选框，基于双向绑定可以进行回显和数据提交
+            dialogFormVisible: false,//控制添加窗口显示/隐藏
+            dialogFormVisible4Edit: false,//控制编辑窗口显示/隐藏
+            rules: {//校验规则
+                code: [{required: true, message: '项目编码为必填项', trigger: 'blur'}],
+                name: [{required: true, message: '项目名称为必填项', trigger: 'blur'}]
+            }
+        },
+        //加载页面即执行的函数
+        created() {
+        let afe=this.getUrlParam(dataliet);
+        this.formData=afe;
+        },
+        methods: {
+            getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                if (r != null) return unescape(r[2]);
+                return null; //返回参数值
+            },
+
+            //添加
+            handleAdd() {
+                // this.$refs[`dataAddForm`].validate(valid => {
+                //     if (valid) {
+                //         if (this.checkitemIds.length > 0) {
+                console.log(this.formData);
+                axios.post(`http://localhost:9003/role/update`, this.formData).then(response => {
+                    if (response.data.flag) {
+                        this.$message({
+                            message: response.data.message,
+                            type: 'success'
+                        });
+
+                    } else {
+                        this.$message().error(response.data.message);
+                    }
+                });
+
+                //         } else {
+                //             this.$message.error("检查项为必选项");
+                //         }
+                //     } else {
+                //         this.$message.error("数据校验失败");
+                //     }
+                // });
+            },
+            // 重置表单
+            resetForm() {
+
+            },
+        }
+    })
+</script>
+</body>
+</html>

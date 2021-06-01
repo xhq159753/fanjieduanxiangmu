@@ -1,0 +1,8 @@
+# Project exclude paths
+/offcn_pe/target/
+/offcnpe_mobile/target/
+/offcnxie_controoler/target/
+/offcnxie_interface/target/
+/offcnxie_pojo/target/
+/offcnxie_provde/target/
+/offcnxie_util/target/

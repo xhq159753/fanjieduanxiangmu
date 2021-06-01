@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcn_dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcn_dao/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcn_pe" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcn_pe/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnpe_mobile" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnpe_mobile/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_controoler" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_controoler/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_pojo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_provde" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_provde/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/offcnxie_util/src/main/java" charset="UTF-8" />
+  </component>
+</project>
